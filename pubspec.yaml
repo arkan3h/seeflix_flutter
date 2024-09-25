@@ -17,3 +17,10 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  fonts:
+    - family: Jakarta
+      fonts:
+        - asset: assets/fonts/Jakarta-regular.ttf
+        - asset: assets/fonts/Jakarta-italic.ttf
+          style: italic
+
