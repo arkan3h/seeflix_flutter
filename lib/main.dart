@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:seeflix_flutter/core/di/injection_container.dart';
 import 'package:seeflix_flutter/presentation/pages/main/bottom_navbar.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  initializeDependencies();
   runApp(const MainApp());
 }
 
