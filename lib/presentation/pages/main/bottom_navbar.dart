@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:seeflix_flutter/core/di/injection_container.dart';
+import 'package:seeflix_flutter/presentation/bloc/popular/popular_bloc.dart';
+import 'package:seeflix_flutter/presentation/bloc/popular/popular_event.dart';
 import 'package:seeflix_flutter/presentation/pages/main/bookmark/bookmarkpage.dart';
 import 'package:seeflix_flutter/presentation/pages/main/home/homepage.dart';
 
@@ -6,15 +10,21 @@ class MovieApp extends StatefulWidget {
   const MovieApp({super.key});
 
   @override
-  _MovieAppState createState() => _MovieAppState();
+  MovieAppState createState() => MovieAppState();
 }
 
-class _MovieAppState extends State<MovieApp> {
+class MovieAppState extends State<MovieApp> {
   int _selectedIndex = 0;
 
-  // Daftar halaman untuk navigasi
-  static List<Widget> _pages = <Widget>[
-    Homepage(),
+  static final List<Widget> _pages = <Widget>[
+    MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => getIt<PopularBloc>()..add(FetchPopular()),
+        ),
+      ],
+      child: const Homepage(),
+    ),
     Bookmarkpage(),
   ];
 

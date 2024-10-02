@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:seeflix_flutter/core/costant/constant.dart';
 import 'package:seeflix_flutter/data/datasources/movie_datasource.dart';
-import 'package:seeflix_flutter/data/mapper/movie_mapper.dart';
 import 'package:seeflix_flutter/data/models/movie.dart';
 
 class MovieDatasourceImpl implements MovieDatasource {
@@ -18,9 +17,10 @@ class MovieDatasourceImpl implements MovieDatasource {
 
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
-      final List<MovieModel> movieList = data['results'];
-
-      return MovieMapper.fromJsonList(movieList);
+      final List<MovieModel> movies = (data['results'] as List)
+        .map((movie) => MovieModel.fromJson(movie))
+        .toList();
+      return movies;
     } else {
       throw Exception('Failed to load movies');
     }
@@ -34,9 +34,10 @@ class MovieDatasourceImpl implements MovieDatasource {
 
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
-      final List<MovieModel> movieList = data['results'];
-
-      return MovieMapper.fromJsonList(movieList);
+      final List<MovieModel> movies = (data['results'] as List)
+        .map((movie) => MovieModel.fromJson(movie))
+        .toList();
+      return movies;
     } else {
       throw Exception('Failed to load movies');
     }
@@ -50,9 +51,10 @@ class MovieDatasourceImpl implements MovieDatasource {
 
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
-      final List<MovieModel> movieList = data['results'];
-
-      return MovieMapper.fromJsonList(movieList);
+      final List<MovieModel> movies = (data['results'] as List)
+        .map((movie) => MovieModel.fromJson(movie))
+        .toList();
+      return movies;
     } else {
       throw Exception('Failed to load movies');
     }
@@ -66,9 +68,10 @@ class MovieDatasourceImpl implements MovieDatasource {
 
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
-      final List<MovieModel> movieList = data['results'];
-
-      return MovieMapper.fromJsonList(movieList);
+      final List<MovieModel> movies = (data['results'] as List)
+        .map((movie) => MovieModel.fromJson(movie))
+        .toList();
+      return movies;
     } else {
       throw Exception('Failed to load movies');
     }
